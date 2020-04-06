@@ -1,0 +1,2 @@
+include ':app', ':broadercastreceiverclient'
+rootProject.name='LearningBroadercastReceiver'
