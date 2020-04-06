@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.touchevent.RootView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <com.example.touchevent.ParentView android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+        android:background="#00ff00"
+        android:padding="50dp">
+        <com.example.touchevent.SonAView
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:background="#ff0000"
+            android:layout_gravity="start"/>
+        <com.example.touchevent.SonBView
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:background="#0000ff"
+            android:layout_gravity="right"/>
+    </com.example.touchevent.ParentView>
+
+</com.example.touchevent.RootView>
