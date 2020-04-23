@@ -1,10 +1,10 @@
+import base.AlgorithmBase;
+
 import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.LinkedList;
 
 public class lengthOfLongestSubstring extends AlgorithmBase {
     @Override
-    void doExecute() {
+    public void doExecute() {
 
     }
 

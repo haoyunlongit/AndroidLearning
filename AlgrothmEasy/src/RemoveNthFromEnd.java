@@ -1,6 +1,8 @@
+import base.AlgorithmBase;
+
 public class RemoveNthFromEnd extends AlgorithmBase {
     @Override
-    void doExecute() {
+    public void doExecute() {
         ListNode node = new ListNode(1);
         ListNode node1 = new ListNode(2);
         ListNode node2 = new ListNode(3);
