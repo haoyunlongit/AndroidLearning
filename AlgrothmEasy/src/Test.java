@@ -1,15 +1,24 @@
-import base.AlgorithmBase;
-import sort.ISort;
-import sort.InsertSort;
+import sort.QuickSort;
 import sort.SelectSort;
+import sort.base.ISort;
+import sort.InsertSort;
+import sort.ShellSort;
 import tool.SortCompare;
+
+import java.util.LinkedList;
+import java.util.List;
 
 
 public class Test {
     public static void main(String[] args) {
-        ISort sort1 = new SelectSort();
-        ISort sort2 = new InsertSort();
+        ISort sort3 = new QuickSort();
+        ISort sort2 = new ShellSort();
+//        ISort sort1 = new SelectSort();
         SortCompare compare = new SortCompare();
-        compare.compare(sort1, sort2, 1000 * 1000);
+        List<ISort> sorts = new LinkedList<>();
+        sorts.add(sort3);
+        sorts.add(sort2);
+//        sorts.add(sort1);
+        compare.compare(sorts, 1000 * 10000);
     }
 }

@@ -1,5 +1,7 @@
 package sort;
 
+import sort.base.BaseSort;
+
 /**
  * 插入排序
  */

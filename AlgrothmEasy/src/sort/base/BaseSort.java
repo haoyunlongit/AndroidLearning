@@ -1,4 +1,4 @@
-package sort;
+package sort.base;
 import base.AlgorithmBase;
 
 public abstract class BaseSort extends AlgorithmBase implements ISort {

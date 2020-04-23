@@ -1,27 +1,26 @@
 package tool;
 
-import sort.ISort;
+import sort.base.ISort;
+
+import java.util.List;
+import java.util.Random;
 
 public class SortCompare {
-    public void compare(ISort sort1, ISort sort2, int seed) {
-        int[] a = createNum(seed);
-        TimeWatch.start();
-        sort1.sortArray(a);
-        long time1 = TimeWatch.stop();
-
-        TimeWatch.start();
-        sort1.sortArray(a);
-        long time2 = TimeWatch.stop();
-
-        System.out.println(sort1.name() + "wast time" + time1);
-        System.out.println(sort2.name() + "wast time" + time2);
+    public void compare(List<ISort> sorts, int seed) {
+        for (ISort sort : sorts) {
+            int[] s = createNum(seed);
+            TimeWatch.start();
+            sort.sortArray(s);
+            long time = TimeWatch.stop();
+            System.out.println(sort.name() + "wast time" + time);
+        }
     }
 
     private int[] createNum(int num) {
         int[] result = new int[num];
+        Random r = new Random();
         for (int i = 0; i < num; i++) {
-            final double d = Math.random();
-            final int temp = (int)(d);
+            final int temp = r.nextInt(num);
             result[i] = temp;
         }
         return result;
