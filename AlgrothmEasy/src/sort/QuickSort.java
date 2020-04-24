@@ -2,6 +2,9 @@ package sort;
 
 import sort.base.BaseSort;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class QuickSort extends BaseSort {
     @Override
     public int[] sortArray(int[] nums) {
