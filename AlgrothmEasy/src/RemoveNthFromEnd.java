@@ -1,4 +1,5 @@
 import base.AlgorithmBase;
+import base.ListNode;
 
 public class RemoveNthFromEnd extends AlgorithmBase {
     @Override
