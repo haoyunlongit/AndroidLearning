@@ -12,37 +12,6 @@ public class mergeKList extends AlgorithmBase {
 
     }
 
-    /**
-     * 要思考时间复杂度 n的方法
-     * @param lists
-     * @return
-     */
-    public ListNode mergeKLists2(ListNode[] lists) {
-        if (lists == null || lists.length == 0) {
-            return null;
-        }
-
-        if (lists.length == 1) {
-            return lists[0];
-        }
-
-        ListNode header = null;
-        ListNode p = null;
-        for (int i = 0; i < lists.length; i ++) {
-            ListNode curNode = lists[i];
-            if (header == null) {
-                header = curNode;
-                p = header;
-                continue;
-            }
-            if (p.val > header.val) {
-
-            }
-
-        }
-
-    }
-
 
     /**
      * 时间复杂度 n^2
