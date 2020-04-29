@@ -1,6 +1,7 @@
 package linkList;
 
 import base.AlgorithmBase;
+import base.ListNode;
 
 public class mergeLists extends AlgorithmBase {
     @Override
