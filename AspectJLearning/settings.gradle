@@ -1,0 +1,3 @@
+rootProject.name='AspectJ'
+include ':app'
+include ':app:submodule'
