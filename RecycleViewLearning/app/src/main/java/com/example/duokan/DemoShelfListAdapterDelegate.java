@@ -18,6 +18,10 @@ public class DemoShelfListAdapterDelegate extends AdapterDelegate<List<DkShelfBa
 
     @Override
     protected boolean isForViewType(@NonNull List<DkShelfBaseItem> items, int position) {
+        DkShelfBaseItem item = items.get(position);
+        if (!(item instanceof DemoShelfBaseItem)) {
+            return false;
+        }
         return true;
     }
 

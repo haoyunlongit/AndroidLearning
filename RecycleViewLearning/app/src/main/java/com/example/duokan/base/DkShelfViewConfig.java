@@ -1,25 +1,25 @@
 package com.example.duokan.base;
 
 public class DkShelfViewConfig {
-    final public int prefetchCount;
+    final public int pageSize;
 
     final public int cacheSize;
 
     final public int column;
 
     private DkShelfViewConfig(Builder builder) {
-        prefetchCount = builder.mPrefetchCount;
+        pageSize = builder.mPageSize;
         cacheSize = builder.mCacheSize;
         column = builder.mColumn;
     }
 
     public static class Builder {
         int mColumn = 1;
-        int mPrefetchCount = 0;
+        int mPageSize = 0;
         int mCacheSize = 0;
 
-        public Builder prefetchCount(final int count) {
-            mPrefetchCount = count;
+        public Builder pageSize(final int count) {
+            mPageSize = count;
             return this;
         }
 

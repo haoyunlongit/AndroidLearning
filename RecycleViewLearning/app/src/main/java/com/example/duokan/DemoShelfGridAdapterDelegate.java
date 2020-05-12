@@ -17,6 +17,10 @@ import java.util.List;
 public class DemoShelfGridAdapterDelegate extends AdapterDelegate<List<DkShelfBaseItem>> {
     @Override
     protected boolean isForViewType(@NonNull List<DkShelfBaseItem> items, int position) {
+        DkShelfBaseItem item = items.get(position);
+        if (!(item instanceof DemoShelfBaseItem)) {
+            return false;
+        }
         return true;
     }
 

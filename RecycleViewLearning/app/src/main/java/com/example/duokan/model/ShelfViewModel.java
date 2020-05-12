@@ -8,15 +8,24 @@ import androidx.paging.DataSource;
 import androidx.paging.LivePagedListBuilder;
 import androidx.paging.PageKeyedDataSource;
 import androidx.paging.PagedList;
-
 import com.example.duokan.base.DkShelfBaseItem;
 import com.example.duokan.base.DkShelfFetcher;
+
 import java.util.List;
 
 public class ShelfViewModel<T extends DkShelfBaseItem> extends ViewModel {
+    static PagedList.Config DEFAULT_CONFIG = new PagedList.Config.Builder()
+            //发送给服务器每页取多少数据
+            .setPageSize(8)
+            //距离底部还有多少条数据时开始预加载
+            //PrefetchDistance必须>PageSize,否则可能不触发loadAfter
+            .setPrefetchDistance(10)
+            .build();
+
     protected LiveData<PagedList<T>> mShelfItems;
     private ShelfDataSourceFactory mShelfDataSourceFactory;
     private DkShelfFetcher<T> mShelfFetcher;
+
 
     public ShelfViewModel(@NonNull final DkShelfFetcher fetcher) {
         mShelfDataSourceFactory = new ShelfDataSourceFactory();
@@ -29,7 +38,6 @@ public class ShelfViewModel<T extends DkShelfBaseItem> extends ViewModel {
     }
 
     private class ShelfDataSourceFactory extends DataSource.Factory {
-
         @NonNull
         @Override
         public DataSource create() {
@@ -58,12 +66,4 @@ public class ShelfViewModel<T extends DkShelfBaseItem> extends ViewModel {
             callback.onResult(list, 0);
         }
     }
-
-    static PagedList.Config DEFAULT_CONFIG = new PagedList.Config.Builder()
-            //发送给服务器每页取多少数据
-            .setPageSize(8)
-            //距离底部还有多少条数据时开始预加载
-            //PrefetchDistance必须>PageSize,否则可能不触发loadAfter
-            .setPrefetchDistance(10)
-            .build();
 }
