@@ -2,10 +2,7 @@ package com.example.duokan.View;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.util.AttributeSet;
-import android.view.View;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -13,8 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.duokan.base.DkShelfViewConfig;
 import com.nikhilpanju.recyclerviewenhanced.RecyclerTouchListener;
-
-import java.lang.ref.WeakReference;
 
 import static com.example.duokan.View.ShelfLayoutType.GIRD;
 import static com.example.duokan.View.ShelfLayoutType.LIST;

@@ -28,11 +28,13 @@ public class DemoShelfGridAdapterDelegate extends AdapterDelegate<List<DkShelfBa
     @Override
     protected RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent) {
         View tempView = LayoutInflater.from(parent.getContext()).inflate(R.layout.shelf__gird_cell, parent, false);
-        return new ShelfBaseViewHolder(tempView);
+        return new DemoShelfItemViewHolder(tempView);
     }
 
     @Override
     protected void onBindViewHolder(@NonNull List<DkShelfBaseItem> items, int position, @NonNull RecyclerView.ViewHolder holder, @NonNull List<Object> payloads) {
-
+        DkShelfBaseItem item = items.get(position);
+        DemoShelfItemViewHolder tempHolder = (DemoShelfItemViewHolder)holder;
+        tempHolder.onBindView(item);
     }
 }

@@ -11,6 +11,7 @@ import androidx.paging.PagedList;
 import com.example.duokan.base.DkShelfBaseItem;
 import com.example.duokan.base.DkShelfFetcher;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class ShelfViewModel<T extends DkShelfBaseItem> extends ViewModel {
@@ -26,7 +27,6 @@ public class ShelfViewModel<T extends DkShelfBaseItem> extends ViewModel {
     private ShelfDataSourceFactory mShelfDataSourceFactory;
     private DkShelfFetcher<T> mShelfFetcher;
 
-
     public ShelfViewModel(@NonNull final DkShelfFetcher fetcher) {
         mShelfDataSourceFactory = new ShelfDataSourceFactory();
         mShelfFetcher = fetcher;
@@ -35,6 +35,44 @@ public class ShelfViewModel<T extends DkShelfBaseItem> extends ViewModel {
 
     public LiveData<PagedList<T>> getBookItems() {
         return mShelfItems;
+    }
+
+    public void setShelfItemSelected(int position) {
+        PagedList<T>pagedList = mShelfItems.getValue();
+        if (pagedList == null || pagedList.size() <= position) {
+            return;
+        }
+
+        DkShelfBaseItem baseItem = pagedList.get(position);
+        boolean selected = baseItem.selected();
+        baseItem.setSelected(!selected);
+    }
+
+    public void resetItemsSelectState() {
+        PagedList<T> pagedList = mShelfItems.getValue();
+        List<T> result = new LinkedList<>();
+        if (pagedList == null || pagedList.size() == 0) {
+            return;
+        }
+
+        for (T item : pagedList) {
+            item.setSelected(false);
+        }
+    }
+
+    public List<T> getSelectedItems() {
+        PagedList<T> pagedList = mShelfItems.getValue();
+        List<T> result = new LinkedList<>();
+        if (pagedList == null || pagedList.size() == 0) {
+            return result;
+        }
+
+        for (T item : pagedList) {
+            if (item.selected()) {
+                result.add(item);
+            }
+        }
+        return result;
     }
 
     private class ShelfDataSourceFactory extends DataSource.Factory {

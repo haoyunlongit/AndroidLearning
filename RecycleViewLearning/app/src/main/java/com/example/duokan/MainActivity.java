@@ -1,19 +1,15 @@
 package com.example.duokan;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.paging.PagedList;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.view.MotionEvent;
-import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.duokan.View.DkShelfViewAdapter;
 import com.example.duokan.View.ShelfLayoutType;
@@ -22,17 +18,14 @@ import com.example.shelf.R;
 import com.example.duokan.View.DkShelfView;
 import com.example.duokan.base.DkShelfBaseItem;
 import com.example.duokan.model.ShelfViewModel;
-import com.nikhilpanju.recyclerviewenhanced.RecyclerTouchListener;
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
     protected DkShelfView mStoreFeed;
-
     private DkShelfViewAdapter mAdapter;
+    private ShelfViewModel mModel;
+    private boolean mSelected = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,19 +41,33 @@ public class MainActivity extends AppCompatActivity {
         mStoreFeed.setItemClickListener(new DkShelfView.OnItemClickListener() {
             @Override
             public void onItemClick(DkShelfView shelfView, int viewId, int position) {
-                System.out.println("~~~~~");
+                if (mSelected) {
+                    mModel.setShelfItemSelected(position);
+                    mAdapter.notifyItemChanged(position);
+                } else {
+                    Toast.makeText(MainActivity.this, "响应click" + position, Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
             public void onItemClick(DkShelfView shelfView, int position) {
-                System.out.println("~~~~~");
+                if (mSelected) {
+                    mModel.setShelfItemSelected(position);
+                    mAdapter.notifyItemChanged(position);
+                } else {
+                    Toast.makeText(MainActivity.this, "响应click" + position, Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         mStoreFeed.setItemLongPressListener(new DkShelfView.OnItemLongPressListener() {
             @Override
             public void onItemLongPress(DkShelfView shelfView, int position) {
-                System.out.println("~~~~~");
+                if (!mSelected) {
+                    mSelected = true;
+                } else {
+                    Toast.makeText(MainActivity.this, "响应longPress" + position, Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -76,10 +83,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         // 获取数据
-        ShelfViewModel model = new ShelfViewModel(new DemoShelfFetcher());
-        LiveData<PagedList<DkShelfBaseItem>> listLiveData = model.getBookItems();
+        mModel = new ShelfViewModel(new DemoShelfFetcher());
+        LiveData<PagedList<DkShelfBaseItem>> listLiveData = mModel.getBookItems();
         listLiveData.observe(this, new Observer<PagedList<DkShelfBaseItem>>() {
             @Override
             public void onChanged(PagedList<DkShelfBaseItem> dkShelfBaseItems) {
@@ -97,5 +103,17 @@ public class MainActivity extends AppCompatActivity {
             shelfViewConfig = new DkShelfViewConfig.Builder().pageSize(5).cacheSize(5).build();
         }
         mStoreFeed.setAdapter(mAdapter, shelfViewConfig);
+    }
+
+    @OnClick(R.id.change_selected)
+    public void changeClick(TextView v) {
+        mSelected = !mSelected;
+        if (mSelected) {
+            v.setText("选中状态");
+        } else {
+            v.setText("非选中状态");
+            mModel.resetItemsSelectState();
+        }
+        mAdapter.notifyDataSetChanged();
     }
 }

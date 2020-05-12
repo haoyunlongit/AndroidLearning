@@ -6,12 +6,21 @@
     android:orientation="vertical">
     <FrameLayout android:layout_width="100dp"
         android:layout_height="100dp"
-        android:background="@color/cardview_dark_background"
+        android:background="#444444"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:layout_marginEnd="10dp"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal">
+        <TextView
+            android:id="@+id/select_flag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:layout_gravity="top"
+            android:textSize="20sp"/>
+    </FrameLayout>
     <TextView android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
