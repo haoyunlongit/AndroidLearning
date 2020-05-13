@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/src/AlgrothBase.iml" filepath="$PROJECT_DIR$/src/AlgrothBase.iml" />
       <module fileurl="file://$PROJECT_DIR$/AlgrothmEasy.iml" filepath="$PROJECT_DIR$/AlgrothmEasy.iml" />
     </modules>
   </component>
