@@ -8,6 +8,7 @@ import androidx.paging.PagedList;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,8 +19,11 @@ import com.example.shelf.R;
 import com.example.duokan.View.DkShelfView;
 import com.example.duokan.base.DkShelfBaseItem;
 import com.example.duokan.model.ShelfViewModel;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import hugo.weaving.DebugLog;
 
 public class MainActivity extends AppCompatActivity {
     protected DkShelfView mStoreFeed;
@@ -27,6 +31,10 @@ public class MainActivity extends AppCompatActivity {
     private ShelfViewModel mModel;
     private boolean mSelected = false;
 
+    @BindView(R.id.change_selected)
+    protected TextView mSelectedView;
+
+    @DebugLog
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,36 +46,21 @@ public class MainActivity extends AppCompatActivity {
         DkShelfViewConfig shelfViewConfig = new DkShelfViewConfig.Builder().pageSize(5).cacheSize(5).build();
         mStoreFeed.setAdapter(mAdapter, shelfViewConfig);
 
-        mStoreFeed.setItemClickListener(new DkShelfView.OnItemClickListener() {
+        mStoreFeed.setAdapter(new RecyclerView.Adapter() {
+            @NonNull
             @Override
-            public void onItemClick(DkShelfView shelfView, int viewId, int position) {
-                if (mSelected) {
-                    mModel.setShelfItemSelected(position);
-                    mAdapter.notifyItemChanged(position);
-                } else {
-                    Toast.makeText(MainActivity.this, "响应click" + position, Toast.LENGTH_SHORT).show();
-                }
+            public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                return null;
             }
 
             @Override
-            public void onItemClick(DkShelfView shelfView, int position) {
-                if (mSelected) {
-                    mModel.setShelfItemSelected(position);
-                    mAdapter.notifyItemChanged(position);
-                } else {
-                    Toast.makeText(MainActivity.this, "响应click" + position, Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+            public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
-        mStoreFeed.setItemLongPressListener(new DkShelfView.OnItemLongPressListener() {
+            }
+
             @Override
-            public void onItemLongPress(DkShelfView shelfView, int position) {
-                if (!mSelected) {
-                    mSelected = true;
-                } else {
-                    Toast.makeText(MainActivity.this, "响应longPress" + position, Toast.LENGTH_SHORT).show();
-                }
+            public int getItemCount() {
+                return 0;
             }
         });
 
