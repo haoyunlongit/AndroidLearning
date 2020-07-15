@@ -1,4 +1,4 @@
-package com.hyl.activity;
+package com.hyl.serializablelearning;
 
 import java.io.Serializable;
 
@@ -13,4 +13,9 @@ public class User implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+
+    private void writeObject(java.io.ObjectOutputStream out) {
+
+    }
+
 }
