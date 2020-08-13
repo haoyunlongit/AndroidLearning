@@ -10,6 +10,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.os.Messenger;
 import android.os.PersistableBundle;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -35,8 +38,10 @@ public class MainActivity extends AppCompatActivity  {
         findViewById(R.id.title_template1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+//                startActivity(intent);
+                int i = 0;
+                i = 100 / i;
             }
         });
 
@@ -124,6 +129,10 @@ public class MainActivity extends AppCompatActivity  {
     @Override
     protected void onPause() {
         super.onPause();
+        Messenger messenger = new Messenger(new Handler());
+        Message message = Message.obtain();
+        message.replyTo = messenger;
+
         Log.i(TAG, "MainActivity onPause");
     }
 

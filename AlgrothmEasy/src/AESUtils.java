@@ -5,6 +5,8 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.io.*;
 import java.security.SecureRandom;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AESUtils {
 
@@ -17,6 +19,7 @@ public class AESUtils {
     /** 随机数生成器（RNG）算法名称 */
     private static final String RNG_ALGORITHM = "SHA1PRNG";
 
+    private static List<String> tempList = new ArrayList<>();
     /**
      * 数据加密: 明文 -> 密文
      */
@@ -64,11 +67,18 @@ public class AESUtils {
     }
 
     public static void main(String[] args) {
+        tempList.add("3333");
+        tempList.add("44");
+        tempList.add("44");
+        tempList.add("331233");
 
-        int newCap = (int)Math.ceil(1 * 0.33);
+        List<String> temp2 = new ArrayList<String>();
+        temp2.add("33");
+        temp2.add("44");
+        temp2.add("cc");
 
+        tempList.removeAll(temp2);
 
-        // 输出解密后的明文: "Hello world!"
-        System.out.println("!~~~~~~~~" + newCap);
+        System.out.println("~~~~" + tempList.toString());
     }
 }
