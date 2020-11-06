@@ -6,6 +6,10 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -87,19 +91,29 @@ public class MainActivity extends AppCompatActivity {
         return result;
     }
 
-//    boolean isTargetStr(String s) {
-//        if (s.length() == 1) {
-//            return true;
-//        }
-//
-//        boolean result = true;
-//        for (int i = 0; i < s.length() >> 1; i++) {
-//             if (s.charAt(i) != s.charAt(s.length() - i - 1)) {
-//                 result = false;
-//                 break;
-//             }
-//        }
-//        return result;
-//    }
+    public int numIdenticalPairs(int[] nums) {
+        Map<Integer, Integer> m = new HashMap<Integer, Integer>();
+        for (int num : nums) {
+            m.put(num, m.getOrDefault(num, 0) + 1);
+        }
+
+        int ans = 0;
+        for (Map.Entry<Integer, Integer> entry : m.entrySet()) {
+            int v = entry.getValue();
+            ans += v * (v - 1) / 2;
+        }
+
+        return ans;
+    }
+
+
+
+
+    public int[] runningSum(int[] nums) {
+        for( int i = 1 ; i < nums.length ; i++ ){
+            nums[i] += nums[i-1];
+        }
+        return nums;
+    }
 
 }

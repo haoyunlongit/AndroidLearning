@@ -2,6 +2,7 @@ package com.example.learningbroadercastreceiver;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -25,5 +26,8 @@ public class MainActivity extends AppCompatActivity {
                 }).start();
             }
         });
+//
+//        BroadcastReceiver receiver = new StartupBroadcastReceiver();
+//        registerReceiver()
     }
 }
