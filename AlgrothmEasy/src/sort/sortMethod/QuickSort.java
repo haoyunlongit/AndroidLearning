@@ -16,35 +16,27 @@ public class QuickSort extends BaseSort {
     }
 
     void doSort(int l, int r, int[] nums) {
-        if (l >= r) {
-            return;
-        }
+       if (l >= r) {
+           return;
+       }
+       int targetNum = nums[l];
+       int left = l;
+       int right = r;
+       while (left < right) {
+           while (nums[right] >= targetNum && left < right) {
+               right --;
+           }
+           nums[left] = nums[right];
+           while (nums[left] < targetNum && left < right) {
+               left++;
+           }
+           nums[right] = nums[left];
+       }
 
-        int temp = nums[l];
-        int left = l;
-        int right = r;
-        while (left < right) {
-            while (left < right) {
-                if (nums[right] > temp) {
-                    right--;
-                } else {
-                    nums[left] = nums[right];
-                    break;
-                }
-            }
+        nums[right] = targetNum;
+        doSort(l, right - 1, nums);
+        doSort(right + 1, r, nums);
 
-            while (left < right) {
-                if (nums[left] <= temp) {
-                    left++;
-                } else {
-                    nums[right] = nums[left];
-                    break;
-                }
-            }
-         }
-         nums[left] = temp;
-         doSort(l, left - 1,nums);
-         doSort(left + 1, r, nums);
     }
 
     @Override
