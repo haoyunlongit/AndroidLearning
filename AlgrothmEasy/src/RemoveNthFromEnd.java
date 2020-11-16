@@ -1,5 +1,5 @@
-import base.AlgorithmBase;
-import base.ListNode;
+import java.base.AlgorithmBase;
+import java.base.ListNode;
 
 public class RemoveNthFromEnd extends AlgorithmBase {
     @Override

@@ -1,4 +1,4 @@
-import base.AlgorithmBase;
+import java.base.AlgorithmBase;
 
 import java.util.HashSet;
 
