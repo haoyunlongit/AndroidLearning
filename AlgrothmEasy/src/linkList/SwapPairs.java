@@ -9,7 +9,7 @@ public class SwapPairs {
         if (head == null || head.next == null) {
             return head;
         }
-
+        
         ListNode pre = null;
         ListNode currentNode = head;
         ListNode nextNote = currentNode.next;
