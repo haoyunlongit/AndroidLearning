@@ -28,7 +28,7 @@ public class LevelOrder {
             list = new LinkedList<Integer>();
             result.add(num, list);
         }
-        list.add(root.val);
+        list.add(root.value);
         nextLevel(root.left, num + 1, result);
         nextLevel(root.right, num + 1, result);
     }
