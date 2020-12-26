@@ -29,16 +29,4 @@ public class TempView extends TextView {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        System.out.println("~~~~~onTouchEvent~~~" + true + "~~" + event.getAction());
-        return true;
-    }
-
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent ev) {
-        boolean result = super.dispatchTouchEvent(ev);
-        System.out.println("TempView~~~~~dispatchTouchEvent~~~" + result);
-        return result;
-    }
 }

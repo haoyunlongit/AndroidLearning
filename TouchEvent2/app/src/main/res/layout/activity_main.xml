@@ -6,6 +6,7 @@
     tools:context=".MainActivity">
 
     <com.example.touchevent.TempView
+        android:id="@+id/title_template"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:background="@color/colorPrimary"

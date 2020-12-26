@@ -3,12 +3,14 @@ package com.example.touchevent;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
 import androidx.annotation.Nullable;
 
 public class SonBView extends View {
+    String TAG = "touch~~";
     public SonBView(Context context) {
         super(context);
     }
@@ -28,14 +30,14 @@ public class SonBView extends View {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         boolean result = super.onTouchEvent(event);
-        System.out.println("onTouchEvent~~~~~SonBView" + event.getAction() + "result = " + result);
+        Log.i(TAG, "onTouchEvent~~~~~SonBView" + event.getAction() + "result = " + result);
         return result;
     }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
         boolean result = super.dispatchTouchEvent(event);
-        System.out.println("dispatchTouchEvent~~~~~SonBView" + event.getAction() + "result = " + result);
+        Log.i(TAG, "dispatchTouchEvent~~~~~SonBView" + event.getAction() + "result = " + result);
         return result;
     }
 }

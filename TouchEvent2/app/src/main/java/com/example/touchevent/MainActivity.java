@@ -6,32 +6,36 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.util.SparseArray;
 import android.view.MotionEvent;
+import android.view.View;
 
+import java.util.HashMap;
 import java.util.concurrent.Callable;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class MainActivity extends AppCompatActivity implements Thread.UncaughtExceptionHandler
+public class MainActivity extends AppCompatActivity
 {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        findViewById(R.id.title_template).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HashMap<String, String> hashMap = new HashMap<>();
+                hashMap.put("ff", "我的哈哈");
+            }
+        });
 
-        Thread.setDefaultUncaughtExceptionHandler(this);
-
-        ExecutorService service = Executors.newCachedThreadPool();
-        service.submit(new Callable<Object>() {
-        })
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         boolean result = super.onTouchEvent(event);
-        int i =  100 / 0;
         System.out.println("MainActivity~~~~~onTouchEvent~~~" + result);
         return result;
     }
@@ -43,17 +47,4 @@ public class MainActivity extends AppCompatActivity implements Thread.UncaughtEx
         return result;
     }
 
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-
-    }
-
-    @Override
-    public void uncaughtException(@NonNull Thread t, @NonNull Throwable e) {
-        try {
-            System.out.println("~~~~~~~");
-        } catch (Throwable t) {
-
-        }
-    }
 }
