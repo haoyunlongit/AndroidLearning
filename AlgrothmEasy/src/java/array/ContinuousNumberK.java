@@ -36,6 +36,6 @@ public class ContinuousNumberK {
 
 
     public static void main(String[] args) {
-
+        System.out.println("~~~~~");
     }
 }

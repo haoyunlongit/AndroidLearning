@@ -1,11 +1,4 @@
 import com.sun.tools.javac.Main;
-import sort.QuickSort;
-import sort.SelectSort;
-import sort.base.ISort;
-import sort.InsertSort;
-import sort.ShellSort;
-import sort.base.SystemSort;
-import tool.SortCompare;
 
 import java.lang.reflect.Proxy;
 import java.util.LinkedList;
